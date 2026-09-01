@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <section>
+        <div id="welcome">
+            <img src="/static/quizbot.png" alt="QuizBot Logo"> <br>
+            <select class="select" id="lang">
+                <option value="" selected disabled>Les Langues</option>
+                <option value="fr">Français (fr)</option>
+                <option value="ar">العربية (ar)</option>
+                <option value="en">English (en)</option>
+            </select> <br> <br>
+            <select class="select" id="cat">
+                <option value="" selected disabled>Les Catégories</option>
+                <option value="IT">Informatique & Tech</option>
+                <option value="Culture">Culture Générale</option>
+                <option value="Histoire & geo">Histoire & Géographie</option>
+                <option value="Sport">Sport</option>
+                <option value="Science & Nature">Science & Nature</option>
+                <option value="Art & Littérature">Art & Littérature</option>
+                <option value="Musique">Musique</option>
+                <option value="Cinéma & TV">Cinéma & TV</option>
+            </select> <br><br>
+            <input type="button" value="start quiz" id="start" onclick="Quiz()">
+        </div>
+        <div id="loading" class="hidden">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <div id="quiz" class="hidden">
+            <div>
+                <div id="quiz-container">
+                    <img src="/static/quizbotn2.jpg" alt="QuizBot Logo" class="quiz-avatar">
+                    <div class="speech-bubble">
+                        <h4 id="question-text">Question</h4>
+                    </div>
+                </div><br><br><br>
+                <div>
+                    <button class="btn" id="btn1" onclick="selectOpt(this.innerText)">Option1</button>
+                    <button class="btn" id="btn2" onclick="selectOpt(this.innerText)">Option2</button> <br><br>
+                    <button class="btn" id="btn3" onclick="selectOpt(this.innerText)">Option3</button>
+                </div>
+            </div>
+        </div>
+        <div id="react" class="hidden">
+            <div id="quiz-container">
+                <img src="/static/reponse.jpg" alt="QuizBot Logo"  class="quiz-avatar">
+                <div class="speech-bubble">
+                    <h4 id="response-text">Reponse</h4>
+                </div>
+            </div><br>
+            <div id="justification-box" class="mt-3 text-center">
+                <p id="justification-text"></p>
+            </div> <br><br>
+            <div class="text-center">
+                <button class="btn" id="next" onclick="nextQuestion()">Next Question</button>
+            </div>
+            <div id="quiz-container">
+                <button id="quit-btn" class="btn-quit" onclick="quitQuiz()">Quitter</button>
+            </div>
+        </div>
+        <div id="score-screen" class="hidden" style="text-align: center; padding: 20px;">
+            <h2>Quiz Terminé ! 🎉</h2>
+            <p>Votre score final est : <span id="final-score">0</span></p>
+            <button id="home-btn" class="btn-home" onclick="goHome()">Retour à l'accueil</button>
+        </div>
+    </section>
+    <script type="text/javascript" src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+section{
+    border:2px solid rgb(244, 188, 217);
+    border-radius: 10px;
+    background-color: #FFD1DC;
+    height: 650px;
+    width:70%;
+    margin-left: 15%;
+    margin-top: 3%;
+    box-shadow: 0px 0px 10px 5px #f3b0da;
+}
+body{
+    background-color: #fb8ed6;
+}
+.select{
+    margin-left: 50%;
+    border: 2px solid #f3b0da;
+    border-radius: 12px;
+    padding: 10px;
+    background-color: #f6c6dc;
+}
+select option{
+    padding: 10px;
+    background-color: #f6c6dc;
+}
+img{
+    width:400px;
+    height:400px;
+    border-radius: 12px;
+}
+#start{
+    margin-left: 50%;
+    border:1px solid #f3b0da;
+    border-radius: 12px;
+    background-color: #f6c6dc;
+    color: rgb(77, 1, 74);
+    width: 150px;
+    font-size: 20px;
+}
+#start:hover{
+    color:lightpink;
+    transform:scale(1.1);
+    transition: 0.5s;
+}
+.hidden{
+    display:none !important;
+}
+#loading{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height: 100%;
+}
+#quiz-container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+}
+#btn1{
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 12px;
+    background-color: rgb(193, 134, 249);
+    box-shadow: 0px 0px 10px 5px #e26cef;
+    margin-left: 45px;
+}
+#btn2{
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 12px;
+    background-color: rgb(193, 134, 249);
+    box-shadow: 0px 0px 10px 5px #e26cef;
+    margin-left: 45px;
+}
+#btn3{
+    width: 300px;
+    border: 1px solid;
+    border-radius: 12px;
+    background-color: rgb(193, 134, 249);
+    box-shadow: 0px 0px 10px 5px #e26cef;
+    margin-left: 100px;
+}
+.btn:hover{
+    transform: scale(1.1);
+}
+.quiz-avatar {
+    width: 250px;
+    height: 250px;
+}
+
+/* El-Bulle de Dialogue */
+.speech-bubble {
+    position: relative;
+    background: #FFF5F7;
+    border: 3px solid #4A154B;
+    border-radius: 20px;
+    padding: 25px;
+    width: 450px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* El-fleche mteaa el-bulle li masouwa fi l-bot */
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #4A154B transparent transparent;
+}
+
+#question-text {
+    color: #4A154B;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#next{
+    margin-left: 50%;
+    border:1px solid #f3b0da;
+    border-radius: 12px;
+    background-color: #f6c6dc;
+    color: rgb(77, 1, 74);
+    width: 150px;
+    font-size: 20px;
+}
+#justification-box {
+    background-color: #FFF5F7;
+    border: 2px dashed #4A154B;
+    border-radius: 12px;
+    padding: 15px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+#justification-text {
+    color: #4A154B;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+#quit-btn{
+    border:1px solid #f3b0da;
+    border-radius: 12px;
+    background-color: #f6c6dc;
+    color: rgb(77, 1, 74);
+    width: 150px;
+    font-size: 20px;
+}
+#home-btn{
+    margin-left: 50%;
+    border:1px solid #f3b0da;
+    border-radius: 12px;
+    background-color: #f6c6dc;
+    color: rgb(77, 1, 74);
+    width: 150px;
+    font-size: 20px;
+}
