@@ -10,7 +10,7 @@
 <body>
     <section>
         <div id="welcome">
-            <img src="/static/quizbot.png" alt="QuizBot Logo"> <br>
+            <center><img src="/static/quizbot.png" alt="QuizBot Logo"> <br></center>
             <select class="select" id="lang">
                 <option value="" selected disabled>Les Langues</option>
                 <option value="fr">Français (fr)</option>
@@ -60,11 +60,13 @@
             <div id="justification-box" class="mt-3 text-center">
                 <p id="justification-text"></p>
             </div> <br><br>
-            <div class="text-center">
-                <button class="btn" id="next" onclick="nextQuestion()">Next Question</button>
-            </div>
-            <div id="quiz-container">
-                <button id="quit-btn" class="btn-quit" onclick="quitQuiz()">Quitter</button>
+            <div id="btn">
+                <div class="text-center">
+                    <button class="btn" id="next" onclick="nextQuestion()">Suivant</button>
+                </div>
+                <div id="quiz-container">
+                    <button id="quit-btn" class="btn-quit" onclick="quitQuiz()">Quitter</button>
+                </div>
             </div>
         </div>
         <div id="score-screen" class="hidden" style="text-align: center; padding: 20px;">
