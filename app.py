@@ -3,6 +3,9 @@ import json
 import requests
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
+from dotenv import load_dotenv  # <--- إضافة هذه المكتبة
+
+load_dotenv()  # <--- تقرأ المفتاح من ملف .env محلياً
 
 basedir = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__, template_folder=os.path.join(basedir, 'templates'), static_folder=os.path.join(basedir, 'static'))
@@ -45,7 +48,8 @@ def generate_question():
     }}
     """
 
-    url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={API_KEY}"
+    # الرابط الصحيح الرسمي المعتمد من Google Gemini
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={API_KEY}"
 
     try:
         res = requests.post(url, json={"contents": [{"parts": [{"text": prompt}]}]}, timeout=60)
