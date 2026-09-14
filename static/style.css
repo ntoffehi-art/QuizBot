@@ -82,7 +82,7 @@ img{
     border-radius: 12px;
     background-color: rgb(193, 134, 249);
     box-shadow: 0px 0px 10px 5px #e26cef;
-    margin-left: 100px;
+    margin-left: 25%;
 }
 .btn:hover{
     transform: scale(1.1);
@@ -204,19 +204,18 @@ img{
         gap: 30px;
     }
     #btn2, #btn1{
-        margin-left: 15px;
+        margin-left: 10px;
         margin-top: 20px;
     }
     #btn3{
-        margin-left: 15px;
+        margin-left: 20%;
         width:200px;
     }
     #justification-box {
-        width: 50%;
-        height:auto;
+        width:100%;
+        height:250px;
     }
     #justification-text {
         font-size: 14px;
-        width:100%;
     }
 }
