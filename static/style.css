@@ -56,6 +56,11 @@ img{
     justify-content:center;
     gap:15px;
 }
+#btncont{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 #btn1{
     width: 200px;
     border: 1px solid black;
@@ -70,7 +75,6 @@ img{
     border-radius: 12px;
     background-color: rgb(193, 134, 249);
     box-shadow: 0px 0px 10px 5px #e26cef;
-    margin-left: 45px;
 }
 #btn3{
     width: 300px;
@@ -117,6 +121,9 @@ img{
     margin-bottom: 20px;
     text-align: center;
 }
+#response-text{
+    font-size: 14px;
+}
 #next{
     margin-left: 0;
     border:1px solid #f3b0da;
@@ -135,12 +142,14 @@ img{
     margin: 0 auto;
 }
 #btn{
+    display:grid;
     grid-template-columns:1fr 1fr;
+    gap: 20px;
 }
 #justification-text {
     color: #4A154B;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 14px;
+    width: 100%;
     margin: 0;
 }
 #quit-btn{
@@ -181,32 +190,26 @@ img{
     #start{
         margin-left: 10%;
     }
-    #quiz-container {
-        flex-direction: column;
-        gap: 10px;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        gap:15px;
-    }
-    .speech-bubble {
-        width: 300px;
-        height:auto;
+    .quiz-avatar {
+        width: 150px;
+        height: 150px;
     }
     #question-text{
-        font-size: 14px;
+        font-size: 12px;
     }
-    #btn1{
-        width: 80%;
-        margin-left: 0;
+    #btncont{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
     }
-    #btn2 {
-        width: 80%;
-        margin-left: 10px;
+    #btn2, #btn1{
+        margin-left: 15px;
+        margin-top: 20px;
     }
-    #btn3 {
-        width: 80%;
-        margin-left: 0;
+    #btn3{
+        margin-left: 15px;
+        width:200px;
     }
     #justification-box {
         width: 50%;
@@ -214,5 +217,6 @@ img{
     }
     #justification-text {
         font-size: 14px;
+        width:100%;
     }
 }

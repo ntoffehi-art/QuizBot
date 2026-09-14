@@ -7,7 +7,6 @@ from flask_cors import CORS
 basedir = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__, template_folder=os.path.join(basedir, 'templates'), static_folder=os.path.join(basedir, 'static'))
 CORS(app)
-
 API_KEY = os.environ.get("GEMINI_API_KEY")
 
 @app.route('/')
