@@ -27,13 +27,21 @@ def generate_question():
     language = data.get('language', 'fr')
 
     prompt = f"""
-    Génère une question de quiz sur {category} en langue {language}.
-    Renvoie UNIQUEMENT un objet JSON valide avec cette structure exacte, sans markdown ni texte additionnel :
+    Tu es un expert en création de quiz éducatifs et captivants.
+    Génère une question de quiz UNIQUE, ORIGINALE et CLAIRE sur le thème "{category}" en langue "{language}".
+
+    Consignes strictes :
+    1. Évite absolument les questions génériques, classiques ou répétitives. Choisis un sous-thème précis, un détail intéressant ou un angle original.
+    2. La question doit être rédigée clairement, de manière compréhensible et sans ambiguïté.
+    3. Propose exactement 3 options distinctes, claires et plausibles. Une seule réponse doit être correcte.
+    4. L'explication doit être courte, claire et pédagogique.
+
+    Renvoie UNIQUEMENT un objet JSON valide avec cette structure exacte, sans balises markdown ni texte additionnel :
     {{
-        "question": "Texte de la question",
+        "question": "Texte de la question claire et originale",
         "options": ["Option 1", "Option 2", "Option 3"],
         "answer": "Exactement le texte de la bonne option parmi les 3",
-        "explanation": "Explication courte de la réponse"
+        "explanation": "Explication courte et claire"
     }}
     """
 
