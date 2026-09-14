@@ -3,14 +3,13 @@ import json
 import requests
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
-from dotenv import load_dotenv  # <--- إضافة هذه المكتبة
+from dotenv import load_dotenv
 
-load_dotenv()  # <--- تقرأ المفتاح من ملف .env محلياً
+load_dotenv()
 
 basedir = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__, template_folder=os.path.join(basedir, 'templates'), static_folder=os.path.join(basedir, 'static'))
 CORS(app)
-API_KEY = os.environ.get("GEMINI_API_KEY")
 
 @app.route('/')
 def home():
@@ -20,6 +19,10 @@ def home():
 def generate_question():
     if request.method == 'OPTIONS':
         return jsonify({'status': 'ok'}), 200
+
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        return jsonify({"error": "GEMINI_API_KEY non trouvé dans l'environnement."}), 500
 
     try:
         data = request.get_json(force=True) or {}
@@ -34,33 +37,38 @@ def generate_question():
     Génère une question de quiz UNIQUE, ORIGINALE et CLAIRE sur le thème "{category}" en langue "{language}".
 
     Consignes strictes :
-    1. Évite absolument les questions génériques, classiques ou répétitives. Choisis un sous-thème précis, un détail intéressant ou un angle original.
-    2. La question doit être rédigée clairement, de manière compréhensible et sans ambiguïté.
-    3. Propose exactement 3 options distinctes, claires et plausibles. Une seule réponse doit être correcte.
-    4. L'explication doit être courte, claire et pédagogique.
+    1. Évite absolument les questions génériques ou répétitives.
+    2. La question doit être rédigée clairement sans ambiguïté.
+    3. Propose exactement 3 options distinctes et plausibles. Une seule réponse doit être correcte.
+    4. L'explication doit être courte et pédagogique.
 
-    Renvoie UNIQUEMENT un objet JSON valide avec cette structure exacte, sans balises markdown ni texte additionnel :
+    Renvoie un objet JSON valide avec cette structure exacte :
     {{
-        "question": "Texte de la question claire et originale",
+        "question": "Texte de la question",
         "options": ["Option 1", "Option 2", "Option 3"],
         "answer": "Exactement le texte de la bonne option parmi les 3",
-        "explanation": "Explication courte et claire"
+        "explanation": "Explication courte"
     }}
     """
 
-    # الرابط الصحيح الرسمي المعتمد من Google Gemini
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={API_KEY}"
+    url = f"[https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=](https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=){api_key}"
+
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "responseMimeType": "application/json"
+        }
+    }
 
     try:
-        res = requests.post(url, json={"contents": [{"parts": [{"text": prompt}]}]}, timeout=60)
+        res = requests.post(url, json=payload, timeout=60)
         res_data = res.json()
 
         if "error" in res_data:
             return jsonify({"error": res_data["error"].get("message", "API Error")}), 400
 
         text_response = res_data['candidates'][0]['content']['parts'][0]['text']
-        clean_json = text_response.replace('```json', '').replace('```', '').strip()
-        parsed_data = json.loads(clean_json)
+        parsed_data = json.loads(text_response)
         
         return jsonify(parsed_data)
 
