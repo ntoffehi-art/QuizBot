@@ -101,7 +101,7 @@ def generate_question():
     payload = {
         "model": selected_model,
         "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0.9,  # رفع درجة العشوائية للتنوع المنوع
+        "temperature": 0.6,  # رفع درجة العشوائية للتنوع المنوع
         "response_format": {"type": "json_object"}
     }
 
