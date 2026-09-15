@@ -71,21 +71,25 @@ def generate_question():
     random_seed = random.randint(1000, 99999)
 
     prompt = f"""
-    Tu es un générateur de quiz professionnel. Génère une question de quiz UNIQUE, ORIGINALE et JAMAIS VUE sur le thème "{category}" en langue "{language}".
-    Code d'unicité à prendre en compte : {random_seed}.
+    You are a professional trivia quiz generator.
+    
+    CRITICAL REQUIREMENTS:
+    1. LANGUAGE: The question, options, and explanation MUST BE ENTIRELY IN "{language}".
+    2. FACTUAL ONLY: Questions MUST be objective facts or trivia. Strictly FORBID subjective, personal opinion, or preference questions (e.g., "What is your favorite...").
+    3. QUESTION: Direct and clear (15 words MAXIMUM).
+    4. OPTIONS: Exactly 3 VERY SHORT options (1 to 6 words MAX each). Only ONE is objectively correct.
+    5. ANSWER: Exact text of the correct option.
+    6. EXPLANATION: Short justification of the fact (8 words MAXIMUM).
 
-    Consignes strictes :
-    1. QUESTION : Directe, originale et précise (15 mots MAXIMUM). Explore des sous-thèmes variés et évite les définitions basiques.
-    2. OPTIONS : Exactement 3 options TRÈS COURTES (1 à 6 mots MAXIMUM par option). Interdiction absolue de faire des phrases longues.
-    3. RÉPONSE : Doit être le texte EXACT de la bonne option parmi les 3.
-    4. EXPLICATION : Ultra-courte, directe et percutante (20 mots MAXIMUM). Pas de phrases complexes.
+    Topic: "{category}"
+    Uniqueness seed: {random_seed}
 
-    Renvoie UNIQUEMENT un objet JSON valide avec cette structure exacte :
+    Return ONLY a valid JSON object matching this structure:
     {{
-        "question": "Texte court de la question ?",
+        "question": "Question text in {language}",
         "options": ["Option 1", "Option 2", "Option 3"],
         "answer": "Option 1",
-        "explanation": "Explication courte."
+        "explanation": "Short justification in {language}"
     }}
     """
 
